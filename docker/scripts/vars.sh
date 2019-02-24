@@ -4,7 +4,7 @@
 # Contains variables used by other scripts.
 #
 
-WEB_CONTAINER_NAME='build.pagevamp.pv'
+WEB_CONTAINER_NAME='playlist.pagevamp.pv'
 
 WEB_CONTAINER_ID=$(docker-compose ps -q ${WEB_CONTAINER_NAME})
 

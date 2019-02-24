@@ -12,12 +12,12 @@ We want to use docker to have a consistent dev env for all devs.
 
 In the root folder do the following:
 
-* Add `build.pagevamp.pv` to `/etc/hosts` with `sudo echo '127.0.0.1 build.pagevamp.pv' >> /etc/hosts` or do in it with a text editor. 
+* Add `playlist.pagevamp.pv` to `/etc/hosts` with `sudo echo '127.0.0.1 playlist.pagevamp.pv' >> /etc/hosts` or do in it with a text editor. 
 
 **OR**
 
 * Start compose by `$ docker-compose up`. If you want to run it on background, run `$ docker-compose up -d`
 * Run npm command easy as `dnodejs npm install`.
-* Browse the builder site from [build.pagevamp.pv](http://build.pagevamp.pv) which runs behind an nginx reverse proxy
-* Access [build.pagevamp.pv/healthz](http://build.pagevamp.pv/healthz) to confirm health pass. It should respond 200.
-*To go inside the running container run `docker exec -it build.pagevamp.pv /bin/bash`
+* Browse the builder site from [playlist.pagevamp.pv](http://playlist.pagevamp.pv) which runs behind an nginx reverse proxy
+* Access [playlist.pagevamp.pv/healthz](http://playlist.pagevamp.pv/healthz) to confirm health pass. It should respond 200.
+*To go inside the running container run `docker exec -it playlist.pagevamp.pv /bin/bash`

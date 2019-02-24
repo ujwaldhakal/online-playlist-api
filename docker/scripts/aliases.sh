@@ -7,8 +7,8 @@ else
 fi
 
 alias dpermit='chmod -R 777 *'
-alias dartisan='docker exec -i 'build.pagevamp.pv' php artisan'
-alias dcomposer='docker exec -i 'build.pagevamp.pv' composer'
+alias dartisan='docker exec -i 'playlist.pagevamp.pv' php artisan'
+alias dcomposer='docker exec -i 'playlist.pagevamp.pv' composer'
 alias dnodejs='docker-compose run nodejs'
 alias dgulp='docker-compose run nodejs gulp'
 alias dgulp-watch='docker-compose run -d nodejs gulp watch'

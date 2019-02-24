@@ -1,0 +1,17 @@
+version: '3'
+services:
+  playlist.pagevamp.pv:
+    container_name: playlist.pagevamp.pv
+    image: pagevamp/nginx-php7-fpm:php73
+    restart: always
+    environment:
+      - VIRTUAL_HOST=playlist.pagevamp.pv
+    volumes:
+      - ./:/var/www
+      - ./docker/sites/default.conf:/etc/nginx/sites-enabled/default
+    networks:
+      - pagevamp
+
+networks:
+  pagevamp:
+    external: true
