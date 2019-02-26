@@ -28,6 +28,7 @@
     ],
     "files": [
       "src/Services/Constants/table.php",
+      "src/Services/Helpers/general.php",
       "app/Support/helpers.php"
     ],
     "psr-4": {
