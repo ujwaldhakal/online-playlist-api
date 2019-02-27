@@ -19,7 +19,7 @@ class BindClass
     public function bind()
     {
         $this->app->bind(UserInterface::class, function () {
-            return new User(app(Connection::class));
+            return new User();
         });
     }
 }

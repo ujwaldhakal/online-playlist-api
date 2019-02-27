@@ -6,14 +6,33 @@ use Laravel\Lumen\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
 {
-    /**
-     * The event listener mappings for the application.
-     *
-     * @var array
-     */
+
     protected $listen = [
-        'App\Events\ExampleEvent' => [
-            'App\Listeners\ExampleListener',
-        ],
+
     ];
+
+    private $domains = [
+        'Authentication'
+    ];
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    /**
+     * Register any application services.
+     */
+    public function register()
+    {
+        $this->registerEvents();
+    }
+
+    private function registerEvents()
+    {
+        foreach ($this->domains as $domain) {
+            $class = "\\OP\\{$domain}\\Resolver\\EventRegistar";
+            $this->listen = array_merge($this->listen, $class::getRegisteredEvents());
+        }
+    }
+
 }

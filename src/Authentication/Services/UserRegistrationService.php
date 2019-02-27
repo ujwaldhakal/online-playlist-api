@@ -2,6 +2,7 @@
 
 namespace OP\Authentication\Services;
 
+use Illuminate\Database\Connection;
 use Illuminate\Support\Collection;
 use OP\Authentication\Entities\UserInterface;
 use OP\Authentication\Exceptions\EmailAlreadyTaken;
@@ -28,7 +29,7 @@ class UserRegistrationService implements CreateInterface
 
     private function checkIfEmailAlreadyExists()
     {
-        if ($this->user->findByEmail($this->formData->get('email'))) {
+        if ($this->user->findByEmail($this->formData->get('email'))->first()) {
             throw new EmailAlreadyTaken();
         }
     }
@@ -41,8 +42,9 @@ class UserRegistrationService implements CreateInterface
     public function extract(): array
     {
         return [
+            'id' => $this->getId(),
             'email' => $this->formData->get('email'),
-            'password' => $this->formData->get('password')
+            'password' => bcrypt($this->formData->get('password'))
         ];
     }
 }

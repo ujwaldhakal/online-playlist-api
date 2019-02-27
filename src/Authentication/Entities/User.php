@@ -2,30 +2,21 @@
 
 namespace OP\Authentication\Entities;
 
+use Illuminate\Database\ConnectionInterface;
+use Illuminate\Database\DatabaseManager;
+use Illuminate\Database\Eloquent\Model;
+use OP\Authentication\Services\UserRegistrationService;
 use OP\Services\AbstractWriteModel;
 
-class User extends AbstractWriteModel implements UserInterface
+class User extends Model implements UserInterface
 {
-    protected $connection;
-    protected $collection;
-
-    public function __construct()
+    public function scopefindByEmail($q, $email)
     {
-        $this->connection;
+        return $q->where('email', $email);
     }
 
-    public function useDefaultTable()
+    public function create(UserRegistrationService $service)
     {
-        return $this->connection->table($this->getDefaultTableName());
-    }
-
-    public function findByEmail($email)
-    {
-        return $this->findWhere('email', $email);
-    }
-
-    public function getDefaultTableName()
-    {
-        return USERS_TABLE;
+        return $this->insert($service->extract());
     }
 }
