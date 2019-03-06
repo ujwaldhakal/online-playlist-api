@@ -14,18 +14,24 @@ class RouteServiceProvider extends AppServiceProvider
      *
      * @var string
      */
+    private $domains = [
+        'Authentication',
+        'Room'
+    ];
+
 
     public function register()
     {
-        $this->mapAuthRoutes();
+        $this->registerRoutes();
     }
 
-    private function mapAuthRoutes()
+    private function registerRoutes()
     {
-        $this->app->router->group([
-            'namespace' => 'App\Http\Controllers',
-        ], function ($router) {
-            require base_path('routes/auth.php');
-        });
+        foreach ($this->domains as $domain) {
+            $class = "\\OP\\{$domain}\\Resolver\\Routes";
+            $class = new $class($this->app);
+            $class->registerRoutes();
+        }
     }
+
 }

@@ -7,8 +7,10 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     private $domains = [
-        'Authentication'
+        'Authentication',
+        'Room'
     ];
+
     /**
      * Register any application services.
      *

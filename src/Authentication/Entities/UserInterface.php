@@ -7,4 +7,6 @@ use OP\Authentication\Services\UserRegistrationService;
 interface UserInterface
 {
     public function create(UserRegistrationService $service);
+
+    public function getId(): String;
 }

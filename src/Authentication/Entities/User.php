@@ -10,10 +10,10 @@ use Illuminate\Auth\Authenticatable;
 use Laravel\Lumen\Auth\Authorizable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Model implements UserInterface, AuthenticatableContract, AuthorizableContract, JWTSubject
+class User extends Model implements UserInterface, AuthenticatableContract, AuthorizableContract, JWTSubject, LoggedInUser
 {
     use Authenticatable, Authorizable;
-
+    public $incrementing = false;
 
     const VERIFIED_USER = 1;
 
@@ -40,5 +40,10 @@ class User extends Model implements UserInterface, AuthenticatableContract, Auth
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
     }
 }

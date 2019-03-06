@@ -3,6 +3,7 @@
 namespace OP\Authentication\Resolver;
 
 use Illuminate\Database\Connection;
+use OP\Authentication\Entities\LoggedInUser;
 use OP\Authentication\Entities\User;
 use OP\Authentication\Entities\UserInterface;
 use OP\Services\Auth\Auth;
@@ -26,6 +27,12 @@ class BindClass
 
         $this->app->bind(UserInterface::class, function () {
             return new User();
+        });
+
+        $this->app->bind(LoggedInUser::class, function () {
+            $auth = app(Auth::class);
+
+            return $auth->user();
         });
     }
 }

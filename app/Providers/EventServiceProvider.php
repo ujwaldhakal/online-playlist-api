@@ -12,8 +12,10 @@ class EventServiceProvider extends ServiceProvider
     ];
 
     private $domains = [
-        'Authentication'
+        'Authentication',
+        'Room'
     ];
+
     /**
      * Register any application services.
      *
