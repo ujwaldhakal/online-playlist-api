@@ -36,7 +36,7 @@ class Room extends Model implements RoomInterface
         return $this->where('slug', $slug)->first();
     }
 
-    public function getCreatorId()
+    public function getCreatorId() : string
     {
         return $this->creator_id;
     }

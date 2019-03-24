@@ -60,6 +60,11 @@ class ApiResponse implements Responsable
     }
 
 
+    public function getStatusCode()
+    {
+        return $this->statusCode;
+    }
+
     public function unAuthorized()
     {
         $this->data = [];

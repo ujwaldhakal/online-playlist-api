@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Laravel\Lumen\Application;
 use OP\Authentication\Entities\LoggedInUser;
 use OP\Authentication\Services\LoginService;
+use OP\Room\Entities\RoomInterface;
 use OP\Room\Events\RoomCreated;
 use OP\Room\Events\RoomDeleted;
 use OP\Room\Services\RoomCreationService;
@@ -24,12 +25,13 @@ use OP\Services\Transformers\CollectionTransformer;
 
 class Delete extends Controller
 {
-    public function __invoke(Application $application, Request $request, ApiResponse $response, LoggedInUser $user)
+    public function __invoke(Application $application, Request $request, ApiResponse $response, LoggedInUser $user,RoomInterface $room)
     {
         try {
             $roomDeletionService = $application->make(RoomDeletionService::class, [
                 'id' => $request->id,
-                'user' => $user
+                'user' => $user,
+                'room' => $room
             ]);
 
             event(new RoomDeleted($roomDeletionService));
