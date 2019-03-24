@@ -10,6 +10,7 @@ use Illuminate\Auth\Authenticatable;
 use Laravel\Lumen\Auth\Authorizable;
 use OP\Room\Services\RoomCreationService;
 use OP\Room\Services\RoomDeletionService;
+use OP\Room\Services\RoomUpdateService;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class Room extends Model implements RoomInterface
@@ -19,6 +20,11 @@ class Room extends Model implements RoomInterface
     public function create(RoomCreationService $service)
     {
         return $this->insert($service->extract());
+    }
+
+    public function updateData(RoomUpdateService $service)
+    {
+        return $this->where(['id' => $service->getId()])->update($service->extract());
     }
 
     public function remove(RoomDeletionService $service)
@@ -36,8 +42,13 @@ class Room extends Model implements RoomInterface
         return $this->where('slug', $slug)->first();
     }
 
-    public function getCreatorId() : string
+    public function getCreatorId(): string
     {
         return $this->creator_id;
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 }

@@ -25,11 +25,11 @@ class ApiResponse implements Responsable
 
     public function fail($message = '', $data = [])
     {
-        if(!empty($data)){
+        if (!empty($data)) {
             $this->data = $data;
         }
 
-        if(!empty($message)){
+        if (!empty($message)) {
             $this->message = $message;
         }
 
@@ -65,6 +65,12 @@ class ApiResponse implements Responsable
         return $this->statusCode;
     }
 
+
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
     public function unAuthorized()
     {
         $this->data = [];
@@ -96,7 +102,7 @@ class ApiResponse implements Responsable
         $manager = new Manager();
         $resource = new Collection($collection->get(), $transformer);
 
-        if($paginator){
+        if ($paginator) {
             $resource->setPaginator($paginator);
         }
 
