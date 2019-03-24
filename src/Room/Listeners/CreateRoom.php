@@ -6,7 +6,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use OP\Room\Entities\RoomInterface;
 use OP\Room\Events\RoomCreated;
 
-class CreateRoom implements ShouldQueue
+class CreateRoom
 {
     private $room;
 

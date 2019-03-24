@@ -29,7 +29,8 @@ class UserRegistrationService implements CreateInterface
 
     private function checkIfEmailAlreadyExists()
     {
-        if ($this->user->findByEmail($this->formData->get('email'))->first()) {
+        $user = $this->user->findByEmail($this->formData->get('email'));
+        if ($user && $user->first()) {
             throw new EmailAlreadyTaken();
         }
     }
