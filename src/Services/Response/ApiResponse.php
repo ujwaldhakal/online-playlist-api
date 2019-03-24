@@ -97,7 +97,7 @@ class ApiResponse implements Responsable
         return response(array_merge($data, ['data' => $this->data]), $this->statusCode);
     }
 
-    public function respondWithCollection(HasResourceCollection $collection, $transformer, PaginatorInterface $paginator = null)
+    public function respondWithCollection($collection, $transformer, PaginatorInterface $paginator = null)
     {
         $manager = new Manager();
         $resource = new Collection($collection->get(), $transformer);

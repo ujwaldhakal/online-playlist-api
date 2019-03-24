@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Database\ConnectionInterface;
 use Illuminate\Support\ServiceProvider;
+use OP\Services\Read\Connection\ReadConnection;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +24,14 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->bindCustomClasses();
+        $this->bindDataConnection();
+    }
+
+    public function bindDataConnection()
+    {
+        $this->app->singleton(ConnectionInterface::class, function () {
+            return app('db')->connection();
+        });
     }
 
     private function bindCustomClasses()
