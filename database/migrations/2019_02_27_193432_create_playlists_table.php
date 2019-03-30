@@ -17,13 +17,10 @@ class CreatePlaylistsTable extends Migration
             $table->string('id')->primary()->index();
             $table->string('name');
             $table->string('slug')->unique();
-
-            $table->string('creator_id')->index();
-            $table->foreign('creator_id')->references('id')->on('users')
+            $table->string('creator_by')->index();
+            $table->foreign('creator_by')->references('id')->on('users')
                 ->onDelete('cascade')->onUpdate('cascade');
-
             $table->tinyInteger('is_youtube_lists')->default(0);
-
             $table->timestamps();
         });
     }

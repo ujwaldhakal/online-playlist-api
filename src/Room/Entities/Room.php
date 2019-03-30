@@ -11,9 +11,10 @@ use Laravel\Lumen\Auth\Authorizable;
 use OP\Room\Services\RoomCreationService;
 use OP\Room\Services\RoomDeletionService;
 use OP\Room\Services\RoomUpdateService;
+use OP\Services\Entities\AbstractEntities;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class Room extends Model implements RoomInterface
+class Room extends AbstractEntities implements RoomInterface
 {
     public $incrementing = false;
 
@@ -30,16 +31,6 @@ class Room extends Model implements RoomInterface
     public function remove(RoomDeletionService $service)
     {
         return $this->where('id', $service->getId())->delete();
-    }
-
-    public function findById($id)
-    {
-        return $this->find($id);
-    }
-
-    public function findbySlug($slug)
-    {
-        return $this->where('slug', $slug)->first();
     }
 
     public function getCreatorId(): string
