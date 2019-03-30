@@ -22,4 +22,9 @@ abstract class AbstractEntities extends Model
         return $this->where($array)->first();
     }
 
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
 }

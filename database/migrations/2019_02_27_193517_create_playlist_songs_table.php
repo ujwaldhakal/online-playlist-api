@@ -26,6 +26,7 @@ class CreatePlaylistSongsTable extends Migration
                 ->onDelete('cascade')->onUpdate('cascade');
 
             $table->tinyInteger('is_youtube_playlist_link')->default(0);
+            $table->tinyInteger('is_youtube_list')->default(0);
 
             $table->tinyInteger('is_played');
             $table->timestamps();
