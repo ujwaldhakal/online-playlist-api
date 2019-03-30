@@ -17,5 +17,9 @@ abstract class AbstractEntities extends Model
         return $this->where('slug', $slug)->first();
     }
 
+    public function findWhere(array $array)
+    {
+        return $this->where($array)->first();
+    }
 
 }

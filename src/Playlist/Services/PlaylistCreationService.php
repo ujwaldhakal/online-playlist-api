@@ -31,7 +31,7 @@ class PlaylistCreationService
 
     private function checkIfItsDuplicateName()
     {
-        if ($this->playlist->findBySlug($this->getSlug())) {
+        if ($this->playlist->findByUserAndSlug($this->user->getId(), $this->getSlug())) {
             throw new PlaylistNameAlreadyExists();
         }
     }
@@ -48,7 +48,9 @@ class PlaylistCreationService
             'id' => $this->id,
             'name' => $this->formData->get('name'),
             'slug' => $this->getSlug(),
-            'created_by' => $this->user->getId()
+            'created_by' => $this->user->getId(),
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
         ];
     }
 }

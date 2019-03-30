@@ -1,15 +1,20 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: anons
- * Date: 3/30/19
- * Time: 1:43 PM
- */
 
 namespace OP\Playlist\Events;
 
+use OP\Playlist\Services\PlaylistCreationService;
 
 class PlaylistCreated
 {
+    private $service;
 
+    public function __construct(PlaylistCreationService $service)
+    {
+        $this->service = $service;
+    }
+
+    public function getService(): PlaylistCreationService
+    {
+        return $this->service;
+    }
 }

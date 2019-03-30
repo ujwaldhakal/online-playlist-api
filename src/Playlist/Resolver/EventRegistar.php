@@ -4,6 +4,14 @@ namespace OP\Playlist\Resolver;
 
 use OP\Authentication\Events\UserRegistered;
 use OP\Authentication\Listeners\RegisterUser;
+use OP\Playlist\Events\PlaylistCreated;
+use OP\Playlist\Events\PlaylistDeleted;
+use OP\Playlist\Events\SongAdded;
+use OP\Playlist\Events\SongRemoved;
+use OP\Playlist\Listeners\AddSong;
+use OP\Playlist\Listeners\CreatePlaylist;
+use OP\Playlist\Listeners\DeletePlaylist;
+use OP\Playlist\Listeners\RemoveSong;
 
 class EventRegistar
 {
@@ -18,9 +26,22 @@ class EventRegistar
     public static function getRegisteredEvents()
     {
         return [
-            UserRegistered::class => [
-                RegisterUser::class
+            PlaylistCreated::class => [
+                CreatePlaylist::class
+            ],
+
+            PlaylistDeleted::class => [
+                DeletePlaylist::class
+            ],
+
+            SongAdded::class => [
+                AddSong::class
+            ],
+
+            SongRemoved::class => [
+                RemoveSong::class
             ]
+
         ];
     }
 }

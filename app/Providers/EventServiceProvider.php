@@ -13,7 +13,8 @@ class EventServiceProvider extends ServiceProvider
 
     private $domains = [
         'Authentication',
-        'Room'
+        'Room',
+        'Playlist'
     ];
 
     /**

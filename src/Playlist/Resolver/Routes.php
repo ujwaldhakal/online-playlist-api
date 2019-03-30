@@ -20,8 +20,13 @@ class Routes
 
     private function mapPlaylistRoutes()
     {
-        $this->app->router->group([], function ($router) {
+
+        $this->app->router->group([
+            'prefix' => 'playlists',
+            'middleware' => 'auth'
+        ], function ($router) {
             require dirname(__DIR__, 1) . '/Routes/playlist.php';
         });
+
     }
 }

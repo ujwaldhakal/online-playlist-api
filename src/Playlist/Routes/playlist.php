@@ -1,4 +1,6 @@
 <?php
 
-$router->post('login', \App\Http\Controllers\Authentication\Login::class);
-$router->post('register', \App\Http\Controllers\Authentication\Register::class);
+$router->post('/', \App\Http\Controllers\Playlist\CreatePlaylist::class);
+$router->delete('/{id}', \App\Http\Controllers\Playlist\DeletePlaylist::class);
+$router->post('/{id}/song/', \App\Http\Controllers\Playlist\AddSong::class);
+$router->delete('/{playlistId}/song/{songId}', \App\Http\Controllers\Playlist\RemoveSong::class);

@@ -14,4 +14,14 @@ class Playlist extends AbstractEntities implements PlaylistInterface
     {
         return $this->insert($service->extract());
     }
+
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    public function findByUserAndSlug($userId, $slug)
+    {
+        return $this->findWhere(['created_by' => $userId, 'slug' => $slug]);
+    }
 }
