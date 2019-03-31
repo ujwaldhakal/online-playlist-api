@@ -70,6 +70,11 @@ abstract class AbstractFilter
         return $this->getParams('search');
     }
 
+    public function hasField(string $fieldName): bool
+    {
+        return in_array($fieldName, $this->getFields());
+    }
+
     public function getFields(): array
     {
         $this->filterFields();
