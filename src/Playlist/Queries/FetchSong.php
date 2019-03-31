@@ -47,6 +47,7 @@ class FetchSong implements ReadInterface
             $query = $query->where(PLAYLIST_SONGS_TABLE . '.playlist_id', $this->filter->getPlaylistId());
         }
 
+        $query->orderBy(PLAYLIST_SONGS_TABLE.'.created_at','ASC');
 
         return $query;
     }
