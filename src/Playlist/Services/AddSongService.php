@@ -60,7 +60,7 @@ class AddSongService implements CreateInterface
         return [
             'id' => $this->getId(),
             'link' => $this->formData->get('link'),
-            'creator_id' => $this->user->getId(),
+            'created_by' => $this->user->getId(),
             'playlist_id' => $this->playlist->getId(),
             'is_youtube_playlist_link' => $this->isYoutubePlaylistLink(),
             'is_youtube_list' => $this->isYoutubeList(),

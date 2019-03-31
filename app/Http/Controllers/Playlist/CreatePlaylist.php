@@ -18,7 +18,6 @@ class CreatePlaylist extends Controller
     public function __invoke(Application $application, Request $request, ApiResponse $response, LoggedInUser $user, PlaylistInterface $playlist)
     {
         try {
-
             $this->runRequestValidation($request);
             $playlistCreatonService = $application->make(PlaylistCreationService::class, [
                 'formData' => $request->all(),
@@ -42,6 +41,5 @@ class CreatePlaylist extends Controller
         $this->validate($request, [
             'name' => 'required'
         ]);
-
     }
 }

@@ -69,7 +69,7 @@ class AddSongTest extends \TestCase
 
         $this->assertArrayHasKey('data', $response);
         $this->assertArrayHasKey('id', $response['data']);
-        $this->assertArrayHasKey('creator_id', $response['data']);
+        $this->assertArrayHasKey('created_by', $response['data']);
         $this->assertArrayHasKey('link', $response['data']);
         $this->assertArrayHasKey('is_played', $response['data']);
         $this->assertArrayHasKey('is_youtube_list', $response['data']);

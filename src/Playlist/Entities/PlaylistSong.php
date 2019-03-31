@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use OP\Playlist\Services\AddSongService;
 use OP\Playlist\Services\PlaylistCreationService;
 use OP\Playlist\Services\PlaylistDeletionService;
+use OP\Playlist\Services\RemoveSongService;
 use OP\Services\Entities\AbstractEntities;
 
 class PlaylistSong extends AbstractEntities implements PlaylistSongInterface
@@ -17,7 +18,7 @@ class PlaylistSong extends AbstractEntities implements PlaylistSongInterface
         return $this->insert($service->extract());
     }
 
-    public function remove(PlaylistDeletionService $service)
+    public function remove(RemoveSongService $service)
     {
         return $this->where(['id' => $service->getId()])->delete();
     }

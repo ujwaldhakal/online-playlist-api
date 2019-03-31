@@ -17,8 +17,8 @@ class CreatePlaylistSongsTable extends Migration
             $table->string('id')->primary()->index();
             $table->string('link');
 
-            $table->string('creator_id')->index();
-            $table->foreign('creator_id')->references('id')->on('users')
+            $table->string('created_by')->index();
+            $table->foreign('created_by')->references('id')->on('users')
                 ->onDelete('cascade')->onUpdate('cascade');
 
             $table->string('playlist_id')->index();

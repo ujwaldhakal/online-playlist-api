@@ -20,7 +20,6 @@ class DeletePlaylist extends Controller
     public function __invoke(Application $application, Request $request, ApiResponse $response, LoggedInUser $user, PlaylistInterface $playlist)
     {
         try {
-
             $playlistDeletionService = $application->make(PlaylistDeletionService::class, [
                 'id' => $request->id,
                 'user' => $user,
@@ -38,5 +37,4 @@ class DeletePlaylist extends Controller
             return $response;
         }
     }
-
 }

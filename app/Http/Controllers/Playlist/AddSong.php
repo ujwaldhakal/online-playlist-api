@@ -20,7 +20,6 @@ class AddSong extends Controller
     public function __invoke(Application $application, Request $request, ApiResponse $response, LoggedInUser $user, PlaylistInterface $playlist)
     {
         try {
-
             $this->runRequestValidation($request);
             $songAddService = $application->make(AddSongService::class, [
                 'formData' => $request->all(),
@@ -45,6 +44,5 @@ class AddSong extends Controller
             'link' => 'required',
             'playlist_id' => 'required'
         ]);
-
     }
 }

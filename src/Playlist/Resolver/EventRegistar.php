@@ -2,8 +2,6 @@
 
 namespace OP\Playlist\Resolver;
 
-use OP\Authentication\Events\UserRegistered;
-use OP\Authentication\Listeners\RegisterUser;
 use OP\Playlist\Events\PlaylistCreated;
 use OP\Playlist\Events\PlaylistDeleted;
 use OP\Playlist\Events\SongAdded;
@@ -20,7 +18,6 @@ class EventRegistar
     public function __construct($app)
     {
         $this->app = $app;
-
     }
 
     public static function getRegisteredEvents()
