@@ -43,7 +43,7 @@ class FetchPlaylist implements ReadInterface
 
         if ($this->filter->shouldCountTotalSongs()) {
             $query = $query->leftJoin(PLAYLIST_SONGS_TABLE, PLAYLISTS_TABLE . '.id', '=', PLAYLIST_SONGS_TABLE . '.playlist_id');
-            $query  = $query->groupBy(PLAYLISTS_TABLE.'.id');
+            $query = $query->groupBy(PLAYLISTS_TABLE . '.id');
         }
 
 

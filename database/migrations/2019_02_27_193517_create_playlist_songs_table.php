@@ -29,6 +29,7 @@ class CreatePlaylistSongsTable extends Migration
             $table->tinyInteger('is_youtube_list')->default(0);
 
             $table->tinyInteger('is_played');
+            $table->tinyInteger('is_playing')->default(0);
             $table->timestamps();
         });
     }
