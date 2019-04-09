@@ -7,6 +7,7 @@ use OP\Authentication\Listeners\RegisterUser;
 use OP\Room\Events\RoomCreated;
 use OP\Room\Events\RoomDeleted;
 use OP\Room\Events\RoomUpdated;
+use OP\Room\Listeners\CreateDefaultPlaylist;
 use OP\Room\Listeners\CreateRoom;
 use OP\Room\Listeners\DeleteRoom;
 use OP\Room\Listeners\UpdateRoom;
@@ -25,7 +26,8 @@ class EventRegistar
     {
         return [
             RoomCreated::class => [
-                CreateRoom::class
+                CreateRoom::class,
+                CreateDefaultPlaylist::class
             ],
 
             RoomDeleted::class => [

@@ -6,6 +6,8 @@ use OP\Room\Events\RoomCreated;
 
 class CreateDefaultPlaylist
 {
+    private $playlistInterface;
+
     public function __construct()
     {
 
@@ -14,6 +16,7 @@ class CreateDefaultPlaylist
 
     public function handle(RoomCreated $event)
     {
+
 
     }
 }
