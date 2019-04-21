@@ -17,6 +17,7 @@ class RouteServiceProvider extends AppServiceProvider
     private $domains = [
         'Authentication',
         'Room',
+        'User',
         'Playlist'
     ];
 
