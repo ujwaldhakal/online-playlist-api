@@ -38,4 +38,9 @@ class Room extends AbstractEntities implements RoomInterface
         return $this->creator_id;
     }
 
+    public function getDjId(): string
+    {
+        return $this->dj_id;
+    }
+
 }

@@ -8,7 +8,8 @@ class FetchRoomsFilter extends AbstractFilter
 {
     protected $allowedParams = [
         'fields',
-        'id'
+        'id',
+        'slug'
     ];
     protected $allowedFields = [
         'id',
@@ -19,4 +20,13 @@ class FetchRoomsFilter extends AbstractFilter
         'slug'
     ];
 
+    public function shouldFilterBySlug()
+    {
+        return !empty($this->getSlug());
+    }
+
+    public function getSlug()
+    {
+        return $this->getParams('slug');
+    }
 }

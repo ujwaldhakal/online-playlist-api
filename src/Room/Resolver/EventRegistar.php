@@ -4,12 +4,14 @@ namespace OP\Room\Resolver;
 
 use OP\Authentication\Events\UserRegistered;
 use OP\Authentication\Listeners\RegisterUser;
+use OP\Room\Events\PlaylistPlayed;
 use OP\Room\Events\RoomCreated;
 use OP\Room\Events\RoomDeleted;
 use OP\Room\Events\RoomUpdated;
 use OP\Room\Listeners\CreateDefaultPlaylist;
 use OP\Room\Listeners\CreateRoom;
 use OP\Room\Listeners\DeleteRoom;
+use OP\Room\Listeners\PlayPlaylist;
 use OP\Room\Listeners\UpdateRoom;
 
 class EventRegistar
@@ -36,6 +38,10 @@ class EventRegistar
 
             RoomUpdated::class => [
                 UpdateRoom::class
+            ],
+
+            PlaylistPlayed::class => [
+                PlayPlaylist::class
             ]
         ];
     }

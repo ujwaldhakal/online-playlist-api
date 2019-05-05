@@ -20,7 +20,6 @@ class Routes
     {
         $this->app->router->group([
             'prefix' => 'rooms',
-            'middleware' => 'auth'
         ], function ($router) {
             require dirname(__DIR__, 1) . '/Routes/rooms.php';
         });

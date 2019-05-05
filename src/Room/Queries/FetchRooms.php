@@ -34,6 +34,9 @@ class FetchRooms implements ReadInterface
             $query = $query->where(ROOMS_TABLE . '.id', $this->filter->getId());
         }
 
+        if ($this->filter->shouldFilterBySlug()) {
+            $query = $query->where(ROOMS_TABLE . '.slug', $this->filter->getSlug());
+        }
         return $query;
     }
 

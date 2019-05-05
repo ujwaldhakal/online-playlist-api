@@ -8,6 +8,8 @@ use OP\Authentication\Entities\User;
 use OP\Authentication\Entities\UserInterface;
 use OP\Playlist\Entities\Playlist;
 use OP\Playlist\Entities\PlaylistInterface;
+use OP\Playlist\Entities\PlaylistQueue;
+use OP\Playlist\Entities\PlaylistQueueInterface;
 use OP\Playlist\Entities\PlaylistSong;
 use OP\Playlist\Entities\PlaylistSongInterface;
 use OP\Services\Auth\Auth;
@@ -31,6 +33,11 @@ class BindClass
 
         $this->app->bind(PlaylistSongInterface::class, function () {
             return new PlaylistSong();
+        });
+
+
+        $this->app->bind(PlaylistQueueInterface::class, function () {
+            return new PlaylistQueue();
         });
     }
 }
