@@ -2,12 +2,14 @@
 
 namespace OP\Playlist\Resolver;
 
+use OP\Playlist\Events\AutoSongChanged;
 use OP\Playlist\Events\PlaylistCreated;
 use OP\Playlist\Events\PlaylistDeleted;
 use OP\Playlist\Events\SongAdded;
 use OP\Playlist\Events\SongPlayed;
 use OP\Playlist\Events\SongRemoved;
 use OP\Playlist\Listeners\AddSong;
+use OP\Playlist\Listeners\ChangeSong;
 use OP\Playlist\Listeners\CreatePlaylist;
 use OP\Playlist\Listeners\DeletePlaylist;
 use OP\Playlist\Listeners\MarkCurrentSongAsPlaying;
@@ -43,6 +45,10 @@ class EventRegistar
 
             SongRemoved::class => [
                 RemoveSong::class
+            ],
+
+            AutoSongChanged::class => [
+                ChangeSong::class
             ]
 
         ];

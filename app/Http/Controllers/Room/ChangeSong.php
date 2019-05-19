@@ -7,15 +7,13 @@ use Illuminate\Http\Request;
 use Laravel\Lumen\Application;
 use OP\Authentication\Entities\LoggedInUser;
 use OP\Room\Queries\FetchCurrentPlaying;
-use OP\Room\Queries\FetchRooms;
 use OP\Room\Queries\Filters\FetchCurrentPlaylistInfoFilter;
-use OP\Room\Queries\Filters\FetchRoomsFilter;
+use OP\Services\Exceptions\ResponseableException;
 use OP\Services\Read\Connection\ReadConnection;
 use OP\Services\Response\ApiResponse;
-use OP\Services\Exceptions\ResponseableException;
 use OP\Services\Transformers\CollectionTransformer;
 
-class CurrentPlaying
+class ChangeSong
 {
     public function __invoke(Application $application, Request $request, ApiResponse $response, LoggedInUser $user, ConnectionInterface $connection)
     {

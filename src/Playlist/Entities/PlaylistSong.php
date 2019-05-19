@@ -2,11 +2,8 @@
 
 namespace OP\Playlist\Entities;
 
-use Illuminate\Database\Eloquent\Model;
 use OP\Playlist\Services\AddSongService;
 use OP\Playlist\Services\CurrentPlayingService;
-use OP\Playlist\Services\PlaylistCreationService;
-use OP\Playlist\Services\PlaylistDeletionService;
 use OP\Playlist\Services\RemoveSongService;
 use OP\Services\Entities\AbstractEntities;
 
@@ -34,6 +31,21 @@ class PlaylistSong extends AbstractEntities implements PlaylistSongInterface
         return $this->where(['id' => $service->getSongId()])->update(['is_playing' => 1]);
     }
 
+    public function findByPlaylistId($playlistId)
+    {
+        return $this->where(['playlist_id' => $playlistId]);
+    }
+
+    public function stopCurrentSong()
+    {
+        $this->is_playing = 0;
+    }
+
+    public function playCurrentSong()
+    {
+        $this->is_playing = 1;
+    }
+
     public function getPlaylistId(): string
     {
         return $this->playlist_id;
@@ -42,5 +54,10 @@ class PlaylistSong extends AbstractEntities implements PlaylistSongInterface
     public function getCreatorId(): string
     {
         return $this->created_by;
+    }
+
+    public function isPlaying(): bool
+    {
+        return $this->is_playing;
     }
 }
