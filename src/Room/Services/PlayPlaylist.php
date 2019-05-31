@@ -4,7 +4,6 @@ namespace OP\Room\Services;
 
 use OP\Authentication\Entities\LoggedInUser;
 use OP\Playlist\Entities\PlaylistInterface;
-use OP\Playlist\Entities\PlaylistQueueInterface;
 use OP\Playlist\Exceptions\PlaylistDoesNotExist;
 use OP\Room\Entities\RoomInterface;
 use OP\Room\Exceptions\RoomDoesNotExist;

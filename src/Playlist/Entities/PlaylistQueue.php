@@ -2,8 +2,6 @@
 
 namespace OP\Playlist\Entities;
 
-use Illuminate\Database\Eloquent\Model;
-use OP\Playlist\Services\PlaylistCreationService;
 use OP\Playlist\Services\PlaylistDeletionService;
 use OP\Room\Services\PlayPlaylist as PlayPlaylistService;
 use OP\Services\Entities\AbstractEntities;
@@ -35,8 +33,19 @@ class PlaylistQueue extends AbstractEntities implements PlaylistQueueInterface
         return $this->where(['room_id' => $roomId, 'playlist_id' => $playlistId]);
     }
 
+
+    public function findByRoomId($roomId)
+    {
+        return $this->where(['room_id' => $roomId]);
+    }
+
     public function getCreatorId(): string
     {
         return $this->created_by;
+    }
+
+    public function getPlaylistId(): string
+    {
+        return $this->playlist_id;
     }
 }

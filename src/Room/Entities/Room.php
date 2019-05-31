@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Auth\Authenticatable;
 use Laravel\Lumen\Auth\Authorizable;
+use OP\Playlist\Entities\PlaylistQueue;
 use OP\Room\Services\RoomCreationService;
 use OP\Room\Services\RoomDeletionService;
 use OP\Room\Services\RoomUpdateService;
@@ -42,5 +43,6 @@ class Room extends AbstractEntities implements RoomInterface
     {
         return $this->dj_id;
     }
+
 
 }
