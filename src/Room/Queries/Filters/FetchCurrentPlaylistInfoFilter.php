@@ -12,6 +12,8 @@ class FetchCurrentPlaylistInfoFilter extends AbstractFilter
     protected $allowedFields = [
         'id',
         'link',
+        'title',
+        'cover_image',
         'created_at',
         'created_by',
         'playlist_id',

@@ -5,6 +5,7 @@ namespace OP\Room\Listeners;
 use OP\Playlist\Entities\PlaylistQueue;
 use OP\Playlist\Entities\PlaylistSong;
 use OP\Room\Events\SongAddedToDefaultPlaylist;
+use OP\Services\Youtube\ExtractSongDetail;
 
 class AddSongToCurrentPlaylist
 {
@@ -20,6 +21,9 @@ class AddSongToCurrentPlaylist
     public function handle(SongAddedToDefaultPlaylist $playlist)
     {
         $service = $playlist->getService();
+        $youtubeService = app(ExtractSongDetail::class,[
+            'songId' => $service->getYoutubeVideo()
+        ]);
 
         $currentQueue = $this->playlistQueue->findByRoomId($service->getRoom()->getId())->first();
 
@@ -28,6 +32,8 @@ class AddSongToCurrentPlaylist
         'link' => $service->getSongLink(),
         'created_by' => $service->getUser()->getId(),
         'playlist_id' => $currentQueue->getPlaylistId(),
+        'title' => $youtubeService->getData()->getTitle(),
+        'cover_image' => $youtubeService->getData()->getCoverPic(),
         'is_youtube_playlist_link' => 0,
         'is_youtube_list' => true,
         'is_playing' => 0,

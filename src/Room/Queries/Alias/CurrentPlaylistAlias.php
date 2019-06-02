@@ -9,6 +9,8 @@ class CurrentPlaylistAlias extends AbstractAlias
     protected $alias = [
         'id' => PLAYLIST_SONGS_TABLE . '.id',
         'link' => PLAYLIST_SONGS_TABLE . '.link',
+        'title' => PLAYLIST_SONGS_TABLE . '.title',
+        'cover_image' => PLAYLIST_SONGS_TABLE . '.cover_image',
         'created_at' => PLAYLIST_SONGS_TABLE . '.created_at',
         'updated_at' => PLAYLIST_SONGS_TABLE . '.updated_at',
         'creator_id' => PLAYLIST_SONGS_TABLE . '.created_by',

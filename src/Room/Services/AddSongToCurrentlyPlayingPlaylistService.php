@@ -37,6 +37,14 @@ class AddSongToCurrentlyPlayingPlaylistService
         }
     }
 
+    public function getYoutubeVideo()
+    {
+        $url = $this->songLink;
+        parse_str( parse_url( $url, PHP_URL_QUERY ), $array );
+
+        return $array['v'];
+    }
+
     public function getId(): string
     {
         return $this->id;

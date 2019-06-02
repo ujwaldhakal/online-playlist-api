@@ -16,6 +16,8 @@ class CreatePlaylistSongsTable extends Migration
         Schema::create('playlist_songs', function (Blueprint $table) {
             $table->string('id')->primary()->index();
             $table->string('link');
+            $table->string('title');
+            $table->string('cover_image');
 
             $table->string('created_by')->index();
             $table->foreign('created_by')->references('id')->on('users')

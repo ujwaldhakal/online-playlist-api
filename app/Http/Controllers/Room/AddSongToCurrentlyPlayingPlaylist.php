@@ -18,7 +18,6 @@ class AddSongToCurrentlyPlayingPlaylist
                              ConnectionInterface $connection, PlaylistSong $playlistSong, RoomInterface $room)
     {
         try {
-
             $service = $application->make(AddSongToCurrentlyPlayingPlaylistService::class, [
                 'roomId' => $request->roomId,
                 'playlistSong' => $playlistSong,
@@ -28,7 +27,10 @@ class AddSongToCurrentlyPlayingPlaylist
             ]);
 
             event(new SongAddedToDefaultPlaylist($service));
-//            return $response->respondWithCollection($query, new CollectionTransformer());
+
+            $response->success();
+
+            return $response;
 
         } catch (ResponseableException $exception) {
             $response->fail($exception->getResponseMessage());
