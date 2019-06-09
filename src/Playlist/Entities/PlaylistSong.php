@@ -46,6 +46,11 @@ class PlaylistSong extends AbstractEntities implements PlaylistSongInterface
         $this->is_playing = 1;
     }
 
+    public function makrAsPlayedAlready()
+    {
+        $this->already_played = 1;
+    }
+
     public function getPlaylistId(): string
     {
         return $this->playlist_id;

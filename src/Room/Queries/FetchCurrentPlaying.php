@@ -38,6 +38,8 @@ class FetchCurrentPlaying implements ReadInterface
 
         $query = $query->join(USERS_TABLE, PLAYLIST_SONGS_TABLE . '.created_by', '=', USERS_TABLE . '.id');
 
+        $query = $query->where([PLAYLIST_SONGS_TABLE.'.already_played' => 0]);
+
         return $query;
     }
 

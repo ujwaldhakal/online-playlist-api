@@ -27,6 +27,7 @@ class ChangeSong
 
             if ($item->isPlaying() && $item->getId() === $currentSongId) {
                 $item->stopCurrentSong();
+                $item->makrAsPlayedAlready();
                 $item->save();
                 $playNextSong = true;
                 return;
