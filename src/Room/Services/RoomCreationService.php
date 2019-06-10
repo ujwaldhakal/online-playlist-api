@@ -48,13 +48,18 @@ class RoomCreationService implements CreateInterface
 
     }
 
+    public function getSlug()
+    {
+        return strtolower($this->formData->get('name'));
+    }
+
     public function extract(): array
     {
         return [
             'id' => $this->getId(),
             'name' => $this->formData->get('name'),
             'creator_id' => $this->user->getId(),
-            'slug' => strtolower($this->formData->get('name')),
+            'slug' => $this->getSlug(),
             'description' => $this->getDescription(),
             'dj_id' => $this->user->getId(),
             'created_at' => date('Y-m-d H:i:s'),

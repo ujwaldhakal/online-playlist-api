@@ -6,8 +6,9 @@ use Illuminate\Support\Collection;
 use OP\Authentication\Entities\LoggedInUser;
 use OP\Playlist\Entities\PlaylistInterface;
 use OP\Playlist\Exceptions\PlaylistNameAlreadyExists;
+use OP\Services\Write\CreateInterface;
 
-class PlaylistCreationService
+class PlaylistCreationService implements CreateInterface
 {
     private $formData;
     private $user;
@@ -21,6 +22,11 @@ class PlaylistCreationService
         $this->user = $user;
         $this->playlist = $playlist;
         $this->runDataValidation();
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
     }
 
     private function runDataValidation()
@@ -42,7 +48,7 @@ class PlaylistCreationService
         return strtolower($this->formData->get('name'));
     }
 
-    public function extract()
+    public function extract() : array
     {
         return [
             'id' => $this->id,
