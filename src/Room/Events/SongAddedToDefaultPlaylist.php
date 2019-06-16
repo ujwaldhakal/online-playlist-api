@@ -2,9 +2,12 @@
 
 namespace OP\Room\Events;
 
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use OP\Room\Services\AddSongToCurrentlyPlayingPlaylistService;
 
-class SongAddedToDefaultPlaylist
+class SongAddedToDefaultPlaylist implements ShouldBroadcast
 {
     private $service;
 
@@ -16,6 +19,11 @@ class SongAddedToDefaultPlaylist
     public function getService(): AddSongToCurrentlyPlayingPlaylistService
     {
         return $this->service;
+    }
+
+    public function broadcastOn()
+    {
+       return 'song-added';
     }
 
 }

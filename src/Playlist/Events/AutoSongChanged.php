@@ -2,9 +2,10 @@
 
 namespace OP\Playlist\Events;
 
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use OP\Playlist\Services\AutoChangeSongService;
 
-class AutoSongChanged
+class AutoSongChanged implements ShouldBroadcast
 {
     private $service;
 
@@ -16,5 +17,10 @@ class AutoSongChanged
     public function getService(): AutoChangeSongService
     {
         return $this->service;
+    }
+
+    public function broadcastOn()
+    {
+       return ['song-changed'];
     }
 }
