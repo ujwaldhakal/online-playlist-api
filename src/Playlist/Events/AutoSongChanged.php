@@ -3,9 +3,10 @@
 namespace OP\Playlist\Events;
 
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use OP\Playlist\Services\AutoChangeSongService;
 
-class AutoSongChanged implements ShouldBroadcast
+class AutoSongChanged implements ShouldBroadcastNow
 {
     private $service;
 

@@ -7,7 +7,8 @@ use OP\Services\Read\Queries\Filters\AbstractFilter;
 class FetchCurrentPlaylistInfoFilter extends AbstractFilter
 {
     protected $allowedParams = [
-        'fields'
+        'fields',
+        'not_played'
     ];
     protected $allowedFields = [
         'id',
@@ -21,6 +22,11 @@ class FetchCurrentPlaylistInfoFilter extends AbstractFilter
         'is_youtube_playlist_link',
         'is_playing'
     ];
+
+    public function shouldFilterNotPlayed() : bool
+    {
+        return !empty($this->getParams('not_played'));
+    }
 
 }
 
