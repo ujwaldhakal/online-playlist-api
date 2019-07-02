@@ -5,6 +5,7 @@ namespace OP\Playlist\Resolver;
 use OP\Playlist\Events\AutoSongChanged;
 use OP\Playlist\Events\PlaylistCreated;
 use OP\Playlist\Events\PlaylistDeleted;
+use OP\Playlist\Events\PlaylistReplayed;
 use OP\Playlist\Events\SongAdded;
 use OP\Playlist\Events\SongPlayed;
 use OP\Playlist\Events\SongRemoved;
@@ -14,6 +15,7 @@ use OP\Playlist\Listeners\CreatePlaylist;
 use OP\Playlist\Listeners\DeletePlaylist;
 use OP\Playlist\Listeners\MarkCurrentSongAsPlaying;
 use OP\Playlist\Listeners\RemoveSong;
+use OP\Playlist\Listeners\ReplayPlaylist;
 
 class EventRegistar
 {
@@ -40,7 +42,7 @@ class EventRegistar
             ],
 
             SongPlayed::class => [
-              MarkCurrentSongAsPlaying::class
+                MarkCurrentSongAsPlaying::class
             ],
 
             SongRemoved::class => [
@@ -49,6 +51,10 @@ class EventRegistar
 
             AutoSongChanged::class => [
                 ChangeSong::class
+            ],
+
+            PlaylistReplayed::class => [
+                ReplayPlaylist::class
             ]
 
         ];

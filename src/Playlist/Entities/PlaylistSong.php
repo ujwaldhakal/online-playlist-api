@@ -36,6 +36,11 @@ class PlaylistSong extends AbstractEntities implements PlaylistSongInterface
         return $this->where(['playlist_id' => $playlistId]);
     }
 
+    public function replayPlaylistSongs($playlistId)
+    {
+        return $this->where(['playlist_id' => $playlistId])->update(['is_playing' => 0,'already_played' => 0]);
+    }
+
     public function stopCurrentSong()
     {
         $this->is_playing = 0;

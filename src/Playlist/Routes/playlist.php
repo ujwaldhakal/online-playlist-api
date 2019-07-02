@@ -8,3 +8,4 @@ $router->post('/{id}/songs/', \App\Http\Controllers\Playlist\AddSong::class);
 $router->get('songs/{songId}/playing', \App\Http\Controllers\Playlist\PlaySong::class);
 $router->delete('/songs/{songId}', \App\Http\Controllers\Playlist\RemoveSong::class);
 $router->get('/{playlistId}/song/auto-change', \App\Http\Controllers\Playlist\AutoChangeSong::class);
+$router->get('/{id}/replay', \App\Http\Controllers\Playlist\Replay::class);
