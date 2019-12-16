@@ -19,7 +19,7 @@
     "pusher/pusher-php-server": "~3.0",
     "ramsey/uuid": "^3.8",
     "tymon/jwt-auth": "^1.0@dev",
-    "vlucas/phpdotenv": "~2.2"
+    "vlucas/phpdotenv": "~4.1"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
